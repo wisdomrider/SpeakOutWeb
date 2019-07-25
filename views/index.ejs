@@ -1,0 +1,22 @@
+<link rel="stylesheet" href="/assets/bs.css">
+<script src="/assets/jquery.js"></script>
+<style>
+    body {
+        background-image: url("/assets/speak.png");
+    }
+</style>
+<div style="padding: 95px;">
+    <img class="offset-5" src="/assets/logo.png" width="180" height="180"/>
+    <h1 class="offset-4 mt-3" style="margin-bottom: 30px;">Speak Out WebPanel</h1>
+    <form method="post" action="/web/login">
+        <input name="username" class="form-control col-xl-5 offset-4" type="text"
+               placeholder="Enter username or Phone number">
+        <br>
+        <input name="password" class="form-control col-xl-5 offset-4" type="password" placeholder="Enter password">
+        <br>
+        <button class="offset-6 btn btn-success mt-3">Login
+        </button>
+    </form>
+</div>
+
+<% include footer.ejs %>

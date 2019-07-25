@@ -1,0 +1,91 @@
+/* The sidebar menu */
+.sidenav {
+    top: 9%;
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 200px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    left: 0;
+    background-color: #111; /* Black */
+    overflow-x: hidden; /* Disable horizontal scroll */
+    padding-top: 20px;
+}
+
+.sidenav .active {
+    background-color: rebeccapurple;
+}
+
+.sidenav :hover {
+    background: green;
+}
+
+/* The navigation menu links */
+.sidenav a {
+    padding: 6px 8px 6px 16px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #818181;
+    display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+    margin-top: 10px;
+    margin-left: 200px; /* Same as the width of the sidebar */
+    padding: 0px 10px;
+}
+
+/* On smaller screens, where height is less than 450px, change the style of the sidebar (less padding and a smaller font size) */
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+.trash {
+    color: rgb(209, 91, 71);
+}
+
+.flag {
+    color: rgb(248, 148, 6);
+}
+
+.panel-body {
+    padding: 0px;
+}
+
+.panel-footer .pagination {
+    margin: 0;
+}
+
+.panel .glyphicon, .list-group-item .glyphicon {
+    margin-right: 5px;
+}
+
+.panel-body .radio, .checkbox {
+    display: inline-block;
+    margin: 0px;
+}
+
+.panel-body input[type=checkbox]:checked + label {
+    text-decoration: line-through;
+    color: rgb(128, 144, 160);
+}
+
+.list-group-item:hover, a.list-group-item:focus {
+    text-decoration: none;
+    background-color: rgb(245, 245, 245);
+}
+
+.list-group {
+    margin-bottom: 0px;
+}

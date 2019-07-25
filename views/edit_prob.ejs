@@ -1,0 +1,17 @@
+<% include header.ejs %>
+<div class="main">
+    <form method="post">
+        <div style="padding: 15px;">
+            <form method="post">
+                <h1>Edit a Issue :</h1>
+                <br>
+                <input value="<%= data.name %>" name="name" class="form-control" type="text"
+                       placeholder="Enter issue name">
+                <br>
+                <button class="offset-5 btn btn-success mt-3">Update</button>
+            </form>
+        </div>
+
+    </form>
+</div>
+<% include footer.ejs %>

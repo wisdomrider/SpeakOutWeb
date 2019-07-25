@@ -1,0 +1,49 @@
+<% include header.ejs %>
+<div class="main">
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ2nfVhxwcAagjUeQ50NiDiN2dQDHTypA"></script>
+    <script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
+    <form method="post">
+        <div style="padding: 15px;">
+            <form method="post">
+                <h1>Edit Organization :</h1>
+                <input value="<%= data.name %>" name="name" class="form-control" type="text"
+                       placeholder="Enter organization name">
+                <br>
+                <input value="<%= data.phoneNumber %>" name="phoneNumber" class="form-control" type="number"
+                       placeholder="Enter number">
+                <br>
+                <input value="<%= data.location %>" type="hidden" name="location" id="loc">
+                <br>
+                Issue organization is dealing with :
+                <select name="tags" class="form-control" multiple>
+                    <% for(var i = 0; i < list.length ; i++) { %>
+                        <option value="<%= list[i].name %>"><%= list[i].name %></option>
+                    <% } %>
+                </select>
+                <br>
+                <input value="<%= data.email %>" name="email" class="form-control" type="text"
+                       placeholder="Enter organization email">
+                <br>
+                <input value="<%= data.password %>" name="password" class="form-control" type="password"
+                       placeholder="Enter organization password">
+                <br>
+                <button class="offset-5 btn btn-success mt-3">Update</button>
+            </form>
+        </div>
+
+    </form>
+</div>
+<% include footer.ejs %>
+<script>
+    var x = document.getElementById("loc");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported.")
+        }
+    }
+
+</script>

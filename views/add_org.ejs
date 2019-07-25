@@ -1,0 +1,70 @@
+<% include header.ejs %>
+<script type="text/javascript"
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBZ2nfVhxwcAagjUeQ50NiDiN2dQDHTypA"></script>
+<script src="https://unpkg.com/location-picker/dist/location-picker.min.js"></script>
+<div class="main">
+    <form method="post">
+        <div style="padding: 15px;">
+            <form method="post">
+                <h1>Add a Organization :</h1>
+                <input name="name" class="form-control" type="text" placeholder="Organization name">
+                <br>
+                <input name="phoneNumber" class="form-control" type="number" placeholder="Enter number">
+                <br>
+                <style>
+                    #map {
+                        width: 100%;
+                        height: 280px;
+                    }
+                </style>
+                <div id="map"></div>
+                <br>
+                <div id="s_loc" onclick="updateLocation()" class="offset-5 btn btn-success">Update Location</div>
+                <input type="hidden" name="location" id="loc">
+                <br>
+                Issue organization is dealing with :
+                <select name="tags" class="form-control" multiple>
+                    <% for(var i = 0; i < data.length ; i++) { %>
+                        <option value="<%= data[i].name %>"><%= data[i].name %></option>
+                    <% } %>
+                </select>
+                <br>
+                <input name="email" class="form-control" type="text" placeholder="Enter organization email">
+                <br>
+                <input name="password" class="form-control" type="password"
+                       placeholder="Enter organization password">
+                <br>
+                <button class="offset-5 btn btn-success mt-3">Submit</button>
+            </form>
+        </div>
+
+    </form>
+</div>
+<% include footer.ejs %>
+<script>
+
+    var x = document.getElementById("loc");
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            alert("Geolocation is not supported.")
+        }
+    }
+
+
+    var locationPicker = new locationPicker('map', {
+        setCurrentPosition: true, // You can omit this, defaults to true
+    }, {
+        zoom: 15 // You can set any google map options here, zoom defaults to 15
+    });
+
+    function updateLocation() {
+        var location = locationPicker.getMarkerPosition();
+        document.getElementById("s_loc").innerText = "Location Recorded"
+        x.value = location.lat + ":" + location.lng;
+    }
+
+
+</script>

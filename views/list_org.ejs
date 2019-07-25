@@ -1,0 +1,21 @@
+<% include header.ejs %>
+
+<div class="main">
+    <h1>Organizations :</h1>
+    <br>
+    <% for (var i = 0; i < data.length; i++) {
+        var org = data[i]; %>
+    <li class="list-group-item">
+        <div class="checkbox">
+            <label for="checkbox2">
+                <%= org.name %>
+            </label>
+        </div>
+        <div class="pull-right action-buttons">
+            <a href="/web/org/edit/<%= org._id %>"><i class="fa fa-edit"></i></a>
+            <a style="margin-left: 10px;" href="/web/org/delete/<%= org._id %>" class="trash"><span class="fa fa-trash"></span></a>
+        </div>
+    </li>
+    <% } %>
+</div>
+<% include footer.ejs %>

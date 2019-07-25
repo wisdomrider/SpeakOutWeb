@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/assets/bs.css">
+<link rel="stylesheet" href="/assets/dash.css">
+<!--<link rel="stylesheet" href="/assets/fa.css">-->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="/assets/jquery.js"></script>
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
+<script>
+    function getCookieValue(a) {
+        var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+        return b ? b.pop() : '';
+    }
+
+    var OneSignal = window.OneSignal || [];
+    OneSignal.push(function () {
+        OneSignal.init({
+            appId: "5b37f7fc-b8a0-4e8d-a8fe-922123414ff9",
+            notifyButton: {
+                enable: true,
+            },
+        });
+    });
+    OneSignal.push(function () {
+        OneSignal.getUserId(function (userId) {
+            console.log(userId);
+            if (getCookieValue("isUpdatedd") !== "yes") {
+                $.post("/web/update", {fcm: userId}, function (data, status) {
+                    console.log(status)
+                });
+            }
+        })
+    });
+</script>
+
+<nav class="navbar navbar-dark bg-primary" style="color:white;">
+    <a class="navbar-brand" href="#">
+        Speak Out
+    </a>
+
+</nav>
+
+
+<div class="sidenav">
+    <a <% if (active == "home"){ %>class="active" <% } %>href="/web/dash">Home</a>
+    <% if (role === "admin"){ %>
+        <a <% if (active == "add_org"){ %>class="active"
+                <% } %>
+           href="/web/org/add">Add Organization</a>
+        <a <% if (active == "list_org"){ %>class="active"
+                <% } %>
+           href="/web/org/list">List Organization</a>
+        <a <% if (active == "add"){ %>class="active"
+                <% } %>
+           href="/web/prob/add">Add Issue</a>
+        <a <% if (active == "list"){ %>class="active"
+                <% } %>
+           href="/web/prob/list">List Issue</a>
+    <% } %>
+    <a href="/web/logout">Logout</a>
+</div>
+

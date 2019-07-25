@@ -1,0 +1,23 @@
+<% include header.ejs %>
+
+<div class="main">
+    <h1>Problems :</h1>
+    <br>
+    <% for (var i = 0; i < data.length; i++) {
+        var prob = data[i]; %>
+    <li class="list-group-item">
+        <div class="checkbox">
+            <label for="checkbox2">
+                <%= prob.name %>
+            </label>
+        </div>
+        <div class="pull-right action-buttons">
+            Created By : <%= prob.createdBy %>
+            <a style="margin-left: 55px;" href="/web/prob/edit/<%= prob._id %>"><i class="fa fa-edit"></i></a>
+            <a style="margin-left: 10px;" href="/web/prob/delete/<%= prob._id %>" class="trash"><span
+                        class="fa fa-trash"></span></a>
+        </div>
+    </li>
+    <% } %>
+</div>
+<% include footer.ejs %>

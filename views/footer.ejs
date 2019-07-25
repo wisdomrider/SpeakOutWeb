@@ -1,0 +1,19 @@
+<link href="/assets/alertify.min.css" rel="stylesheet"/>
+<script src="/assets/alertify.min.js"></script>
+<script>
+    <%
+    if(!!locals.errorMessage){ %>
+    alertify.error('<%= errorMessage %>')
+    <%
+    }
+    else if(!!locals.successMessage){ %>
+    alertify.success('<%= successMessage %>')
+    <%
+    }
+    else if(!!locals.warningMessage){ %>
+    alertify.warn('<%= warningMessage %>')
+    <%
+    }
+    %>
+
+</script>
